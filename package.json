@@ -1,35 +1,41 @@
 {
-  "name": "difference-calculator",
-  "version": "1.0.0",
-  "type": "module",
-  "description": "Compares two configuration files and shows the difference.",
-  "main": "index.js",
-  "jest": {
-    "verbose": true,
-    "transform": {}
-  },
-  "scripts": {
-    "test": "jest"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/LisaProgect/difference-calculator.git"
-  },
-  "author": "Lisa",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/LisaProgect/difference-calculator/issues"
-  },
-  "homepage": "https://github.com/LisaProgect/difference-calculator#readme",
-  "devDependencies": {
-    "@jest/globals": "^28.1.1",
-    "commander": "^9.3.0",
-    "eslint": "^8.18.0",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.26.0",
-    "jest": "^28.1.1",
-    "jest-cli": "^28.1.1",
-    "js-yaml": "^4.1.0",
-    "lodash": "^4.17.21"
-  }
+    "name": "difference-calculator",
+    "version": "1.0.0",
+    "type": "module",
+    "description": "Compares two configuration files and shows the difference.",
+    "main": "index.js",
+    "jest": {
+        "verbose": true,
+        "transform": {}
+    },
+    "bin": {
+        "gendiff": "bin/gendiff.js"
+    },
+    "scripts": {
+        "test": "jest"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/LisaProgect/difference-calculator.git"
+    },
+    "author": "Lisa",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/LisaProgect/difference-calculator/issues"
+    },
+    "homepage": "https://github.com/LisaProgect/difference-calculator#readme",
+    "devDependencies": {
+        "@jest/globals": "^28.1.1",
+        "eslint": "^8.18.0",
+        "eslint-config-airbnb-base": "^15.0.0",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-plugin-import": "^2.26.0",
+        "jest": "^28.1.1",
+        "jest-cli": "^28.1.1"
+    },
+    "dependencies": {
+        "commander": "^9.3.0",
+        "js-yaml": "^4.1.0",
+        "lodash": "^4.17.21"
+    }
 }
