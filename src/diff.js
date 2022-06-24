@@ -1,9 +1,13 @@
 import fs from 'fs';
 import _ from 'lodash';
+import path from 'path';
+import parser from './parser.js';
+import render from './formatters/index.js';
 
 const getParseDataFile = (pathToFile) => {
     const readFile = fs.readFileSync(pathToFile, 'utf8');
-    return JSON.parse(readFile);
+    const extensions = path.extname(pathToFile).slice(1);
+    return parser(readFile, extensions);
 };
 
 const propertyActions = [
@@ -59,7 +63,7 @@ const diff = (pathToFileBefore, pathFileToAfter, format) => {
         pathFileToAfter,
     ].map((pathToFile) => getParseDataFile(pathToFile));
     const ast = buildAst(contentBefore, contentAfter);
-    console.log(ast);
+    return render(ast, format);
 };
 
 export default diff;
