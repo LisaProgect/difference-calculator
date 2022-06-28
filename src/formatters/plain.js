@@ -22,7 +22,7 @@ const typeData = {
     nested: (key, value, fn) => fn(value.children, key),
 };
 
-export default (ast) => {
+export default (data) => {
     const iter = (node, parent) =>
         node
             .map(({ key, type, ...values }) => {
@@ -31,5 +31,5 @@ export default (ast) => {
             })
             .filter((el) => !!el)
             .join('\n');
-    return iter(ast, '');
+    return iter(data, '');
 };

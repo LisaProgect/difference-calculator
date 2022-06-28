@@ -13,30 +13,27 @@ const fullPathToDir = path.join(__dirname, '..');
 const getFixturePath = (filename, dir = fullPathToDir) =>
     path.join(dir, '__fixtures__', filename);
 
-test.each([['.json', 'plain']])(
-    'genDiff extension %s format %s',
-    (extension, format) => {
-        const expected = fs
-            .readFileSync(
-                getFixturePath(`result${_.upperFirst(format)}.txt`),
-                'utf-8'
-            )
-            .trim();
+test.each([
+    ['.json', 'plain'],
+    ['.ini', 'pretty'],
+    ['.yaml', 'json'],
+])('genDiff extension %s format %s', (extension, format) => {
+    const expected = fs
+        .readFileSync(
+            getFixturePath(`result${_.upperFirst(format)}.txt`),
+            'utf-8'
+        )
+        .trim();
 
-        const absolutePathBefore = getFixturePath(`before${extension}`);
-        const absolutePathAfter = getFixturePath(`after${extension}`);
-        const actual = genDiff(absolutePathBefore, absolutePathAfter, format);
+    const absolutePathBefore = getFixturePath(`before${extension}`);
+    const absolutePathAfter = getFixturePath(`after${extension}`);
+    const actual = genDiff(absolutePathBefore, absolutePathAfter, format);
 
-        expect(actual).toBe(expected);
+    expect(actual).toBe(expected);
 
-        const relativePathsAfter = getFixturePath(`after${extension}`, '.');
-        const relativePathsBefore = getFixturePath(`before${extension}`, '.');
-        const actual2 = genDiff(
-            relativePathsBefore,
-            relativePathsAfter,
-            format
-        );
+    const relativePathsAfter = getFixturePath(`after${extension}`, '.');
+    const relativePathsBefore = getFixturePath(`before${extension}`, '.');
+    const actual2 = genDiff(relativePathsBefore, relativePathsAfter, format);
 
-        expect(actual2).toBe(expected);
-    }
-);
+    expect(actual2).toBe(expected);
+});

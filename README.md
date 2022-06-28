@@ -8,7 +8,7 @@
 
 ## Description
 
-Welcome to this pet project. This program for comparing two configuration files and showing the difference between them.There are five console games.
+Welcome to this pet project. This program compare FILES line by line and showing the difference between them.
 
 ## <a name="installation"></a>Installation
 
@@ -31,7 +31,7 @@ make link
 ## <a name="how_to_use"></a>How to use
 
 Run on console command `diff` and then enters the paths to the files to compare.
-You can use flag `-f, --format [type]`, this is output format. The default output format is 'ast'.
+You can use flag `-f, --format [type]`, this is output format. There are three types `plain, pretty, json`. The default output format is 'plain'.
 
 ```console
 diff /path/to/file-before.json /path/to/file-after.json -f plain
